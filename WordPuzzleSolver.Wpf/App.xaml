@@ -1,0 +1,37 @@
+﻿<Application x:Class="WordPuzzleSolver.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:WordPuzzleSolver.Wpf.ViewModels"
+             xmlns:views="clr-namespace:WordPuzzleSolver.Wpf.Views"
+             xmlns:converters="clr-namespace:WordPuzzleSolver.Wpf.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml" />
+                <ResourceDictionary Source="/Styles/TextBoxStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:BooleanToBrushConverter x:Key="BooleanToBrushConverter" />
+            <converters:GreaterThanZeroConverter  x:Key="GreaterThanZeroConverter" />
+            <converters:SupportedLanguageToDescriptionConverter x:Key="SupportedLanguageToDescriptionConverter" />
+            <converters:SupportedThemeToDescriptionConverter x:Key="SupportedThemeToDescriptionConverter" />
+            <converters:ActiveViewToColorConverter x:Key="ActiveViewToColorConverter" />
+
+        <vm:ViewModelLocator x:Key="Locator" />
+            <DataTemplate DataType="{x:Type vm:MainWindowViewModel}">
+                <views:MainWindow DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SolverViewModel}">
+                <views:SolverView DataContext="{Binding SolverViewModel, Source={StaticResource Locator}}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+                <views:SettingsView DataContext="{Binding SettingsViewModel, Source={StaticResource Locator}}" />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AboutViewModel}">
+                <views:AboutView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:HowToGuideViewModel}">
+                <views:HowToGuideView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

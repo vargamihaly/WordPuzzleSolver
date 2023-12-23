@@ -1,0 +1,6 @@
+{
+  "MinWordLength": 2,
+  "MaxWordLength": 8,
+  "BoardSize": 3,
+  "CurrentLanguage": 1
+}

@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Page Update="Styles\ColorResources.xaml">
+          <Generator>MSBuild:Compile</Generator>
+          <XamlRuntime>Wpf</XamlRuntime>
+          <SubType>Designer</SubType>
+        </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+        <PackageReference Include="Material.Icons.WPF" Version="2.1.0" />
+        <PackageReference Include="MaterialDesignThemes" Version="5.0.0-ci484" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Scrutor" Version="4.2.2" />
+        <PackageReference Include="Syncfusion.Grid.WPF" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.Licensing" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.SfAccordion.WPF" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.SfGrid.WPF" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.SfNavigationDrawer.WPF" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.Shared.WPF" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.Themes.MaterialLight.WPF" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.Themes.Windows11Dark.WPF" Version="24.1.41" />
+        <PackageReference Include="Syncfusion.Tools.WPF" Version="24.1.41" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Resources\wordlist_en.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\Fonts\Bitter\Bitter-Black.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-BlackItalic.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-Bold.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-BoldItalic.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-ExtraBold.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-ExtraBoldItalic.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-ExtraLight.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-ExtraLightItalic.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-Italic.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-Light.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-LightItalic.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-Medium.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-MediumItalic.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-Regular.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-SemiBold.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-SemiBoldItalic.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-Thin.ttf" />
+      <None Remove="Assets\Fonts\Bitter\Bitter-ThinItalic.ttf" />
+      <None Remove="Assets\Fonts\Libre_Baskerville\LibreBaskerville-Bold.ttf" />
+      <None Remove="Assets\Fonts\Libre_Baskerville\LibreBaskerville-Italic.ttf" />
+      <None Remove="Assets\Fonts\Libre_Baskerville\LibreBaskerville-Regular.ttf" />
+      <None Remove="Assets\Fonts\Rubik_Lines\RubikLines-Regular.ttf" />
+      <None Remove="Assets\Fonts\Rubik_Scribble\RubikScribble-Regular.ttf" />
+      <None Remove="Assets\logo.png" />
+      <None Remove="Resources\wordlist.txt" />
+      <Resource Include="Resources\wordlist_hu.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\hand-ok-icon.ico" />
+      <None Remove="Assets\spinner.gif" />
+      <None Remove="Assets\img_setting.png" />
+      <None Remove="Assets\img_exit.png" />
+      <None Remove="Assets\img_home.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Assets\logo.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <EmbeddedResource Include="Resources\wordlist_en.txt" />
+      <None Remove="Resources\wordlist.txt" />
+      <EmbeddedResource Include="Resources\wordlist_hu.txt" />
+      <None Remove="Assets\hand-ok-icon.ico" />
+      <Resource Include="Assets\hand-ok-icon.ico">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Assets\spinner.gif" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\WordPuzzleSolver.Common.Core\WordPuzzleSolver.Common.Core.csproj" />
+    </ItemGroup>
+
+</Project>

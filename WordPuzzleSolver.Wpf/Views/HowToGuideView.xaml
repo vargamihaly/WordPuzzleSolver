@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="WordPuzzleSolver.Wpf.Views.HowToGuideView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <materialDesign:Card Margin="10" Padding="10" >
+            <DockPanel>
+                <Image Source="pack://application:,,,/WordPuzzleSolver.Wpf;component/Assets/logo.png" DockPanel.Dock="Left" Margin="10" Height="200"/>
+                <TextBlock VerticalAlignment="Center"  TextWrapping="Wrap" Margin="5,0"  FontSize="16">
+   The Word Puzzle Game Solver is a utility tool designed to assist users in finding all possible words from a set of letters arranged in a 3x3 grid. <LineBreak /><LineBreak />
+                  This application is perfect for word puzzle enthusiasts looking for a little help or those curious to find every potential word combination.
+                </TextBlock>
+            </DockPanel>
+        </materialDesign:Card>
+
+        <materialDesign:Card Margin="10" Padding="10" >
+            <DockPanel>
+                <materialDesign:PackIcon Kind="BookOpenPageVariant"  Margin="0,0,10,0" Width="30" Height="30" DockPanel.Dock="Left"/>
+                <StackPanel HorizontalAlignment="Left">
+                    <TextBlock Text="Usage" Style="{DynamicResource Header-Primary-Style}" Margin="0, 0, 0, 10" FontSize="15" FontWeight="SemiBold"/>
+                    <TextBlock  TextWrapping="Wrap" Margin="5,0" >
+                         1. Upon application startup, you will be presented with a 3x3 grid.. <LineBreak />
+                         2. Enter your desired letters into each cell of the grid.<LineBreak />
+                         3. Click the 'Find Words' button to generate a comprehensive list of all possible word combinations based on your input. <LineBreak />
+                         4. To see a visual representation of a word's path on the grid, simply hover your cursor over any word within the list. <LineBreak />
+                         5. If you wish to reset the grid and start anew, simply click the 'Clear Board' button.
+                    </TextBlock>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:Card>
+    </StackPanel>
+</UserControl>

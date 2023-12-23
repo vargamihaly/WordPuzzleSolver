@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="WordPuzzleSolver.Wpf.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:WordPuzzleSolver.Wpf.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:WordPuzzleSolver.Wpf.ViewModels"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance Type=vm:SettingsViewModel, IsDesignTimeCreatable=True}">
+
+    <StackPanel Margin="10,0,0,0" >
+        <syncfusion:LabelTextBlock Text="Solver configuration" HorizontalAlignment="Left" Margin="0,0,0,10" FontWeight="SemiBold"/>
+        <syncfusion:SfAccordion HorizontalAlignment="Center"  VerticalAlignment="Center">
+            <syncfusion:SfAccordionItem>
+                <syncfusion:SfAccordionItem.Header>
+                    <DockPanel>
+                        <materialDesign:PackIcon Kind="FormatSize" Margin="0,0,10,0" Width="30" Height="30"/>
+                        <TextBlock Text="Word Length" VerticalAlignment="Center" />
+                    </DockPanel>
+                </syncfusion:SfAccordionItem.Header>
+                <materialDesign:Card Margin="10" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <DockPanel >
+                            <Label Content="Minimum:" VerticalAlignment="Center" DockPanel.Dock="Left" Margin="50,0,10,0" />
+                            <controls:IntegerUpDown Value="{Binding MinWordLength, Mode=TwoWay}" Step="1" Minimum="1" Maximum="{Binding MaxWordLength}" Width="60" />
+                        </DockPanel>
+                        <DockPanel >
+                            <Label Content="Maximum:" VerticalAlignment="Center" DockPanel.Dock="Left" Margin="50,0,10,0" />
+                            <controls:IntegerUpDown Value="{Binding MaxWordLength, Mode=TwoWay}" Step="1" Minimum="{Binding MinWordLength}" Maximum="20" Width="60" />
+                        </DockPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </syncfusion:SfAccordionItem>
+
+            <syncfusion:SfAccordionItem>
+                <syncfusion:SfAccordionItem.Header>
+                    <DockPanel>
+                        <materialDesign:PackIcon Kind="Translate" Margin="0,0,10,0" Width="30" Height="30"/>
+                        <TextBlock Text="Wordlist Language" VerticalAlignment="Center" />
+                    </DockPanel>
+                </syncfusion:SfAccordionItem.Header>
+                <materialDesign:Card Margin="10" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <DockPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                <ListBox ItemsSource="{Binding AvailableLanguages}" SelectedItem="{Binding PreferredLanguage}">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListBoxItem}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                        <ContentPresenter />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Margin" Value="5,0"/>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <RadioButton Content="{Binding Converter={StaticResource SupportedLanguageToDescriptionConverter}}" GroupName="LanguageGroup">
+                                                <RadioButton.IsChecked>
+                                                    <Binding Path="IsSelected" RelativeSource="{RelativeSource AncestorType={x:Type ListBoxItem}}" Mode="TwoWay"/>
+                                                </RadioButton.IsChecked>
+                                            </RadioButton>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                        </DockPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </syncfusion:SfAccordionItem>
+
+            <syncfusion:SfAccordionItem>
+                <syncfusion:SfAccordionItem.Header>
+                    <DockPanel>
+                        <materialDesign:PackIcon Kind="Grid" Margin="0,0,10,0" Width="30" Height="30"/>
+                        <TextBlock Text="Board Size" VerticalAlignment="Center" />
+                    </DockPanel>
+                </syncfusion:SfAccordionItem.Header>
+                <materialDesign:Card Margin="10" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <DockPanel>
+                            <controls:IntegerUpDown Value="{Binding BoardSize, Mode=TwoWay}" Step="1"
+                                         Minimum="3"
+                                         Maximum="5" Width="60" />
+                        </DockPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </syncfusion:SfAccordionItem>
+        </syncfusion:SfAccordion>
+
+        <syncfusion:LabelTextBlock Text="General" HorizontalAlignment="Left" Margin="0,50,0,10" FontWeight="SemiBold"/>
+        <syncfusion:SfAccordion HorizontalAlignment="Center"  VerticalAlignment="Center">
+            <syncfusion:SfAccordionItem>
+                <syncfusion:SfAccordionItem.Header>
+                    <DockPanel>
+                        <materialDesign:PackIcon Kind="Theme" Margin="0,0,10,0" Width="30" Height="30"/>
+                        <TextBlock Text="Theme" VerticalAlignment="Center" />
+                    </DockPanel>
+                </syncfusion:SfAccordionItem.Header>
+                <materialDesign:Card Margin="10" Padding="10">
+                    <StackPanel Orientation="Horizontal">
+                        <DockPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                <ListBox ItemsSource="{Binding AvailableThemes}" SelectedItem="{Binding PreferredTheme}">
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemContainerStyle>
+                                        <Style TargetType="{x:Type ListBoxItem}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                                        <ContentPresenter />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Margin" Value="5,0"/>
+                                        </Style>
+                                    </ListBox.ItemContainerStyle>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <RadioButton Content="{Binding Converter={StaticResource SupportedThemeToDescriptionConverter}}" GroupName="ThemeGroup">
+                                                <RadioButton.IsChecked>
+                                                    <Binding Path="IsSelected"
+                                                             RelativeSource="{RelativeSource AncestorType={x:Type ListBoxItem}}"
+                                                             Mode="TwoWay"/>
+                                                </RadioButton.IsChecked>
+                                            </RadioButton>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                        </DockPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </syncfusion:SfAccordionItem>
+        </syncfusion:SfAccordion>
+    </StackPanel>
+</UserControl>
